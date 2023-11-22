@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Something; from somewhere</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id = "queryContainer">
+        <div class="query">
+          When people read my story, I want them to feel…</br><input type="text" id="field0" maxlength="40" placeholder="40 character limit"></br></br>
+          The lesson/moral of my story is…</br><input type="text" id="field1" maxlength="40" placeholder="40 character limit"></br></br>
+          The genre(s) that would best describe my story is…</br><input type="text" id="field2" maxlength="40" placeholder="40 character limit"></br></br>
+          One important detail of my story is…</br><input type="text" id="field3" maxlength="40" placeholder="40 character limit"></br></br>
+          My story physically takes place in is...</br><input type="text" id="field4" maxlength="40" placeholder="40 character limit"></br></br>
+          The time my story takes place in is…</br><input type="text" id="field5" maxlength="40" placeholder="40 character limit"></br></br></br>
+
+          <input type="button" id="submitQuery" onClick="processQuery()" value="Run simulation">
+        </div>
+        <div id ="instructions">Someone;</br>from somewhere</div>
+    </div>
+  </body>
+
+  <div id="popup" class="popup">
+    <div id="loader"></div>
+    <div id="loadingText">Finding someone...</div>
+    <div id="imageHolder"></div>
+    <div id="returnedResults"></div></br></br>
+    <input type="button" id="closeOverlayBTN" onClick="closePopup()" value="Close Window">
+  </div>
+
+  <div id="overlay" class="overlay">
+  </div>
+
+</html>
+
+<script src="js/processQuery.js"></script>
+
+
