@@ -18,6 +18,7 @@ const port = 3000;
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+var jsonParser = bodyParser.json()
 
 //SETS UP ALL FILES IN THE PUBLIC FOLDER//
 app.use(express.static("public"))
@@ -32,26 +33,21 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
 });
 
-
-var jsonParser = bodyParser.json()
-
 //OPENAI QUERY//
 async function main() {
 
     try {
       
+        //GENERATE OPENAI QUERY//
         app.post('/api/generate', jsonParser, async(req, res) => {
 
-            const responseLimiter = "Limit response to one sentence and do not include personalize greetings or names"
-            const worldSetup = "Pretend you are someone helping me write a fantasy novel"
-            let data1 = req.body.value;
-
-            //console.log(data1);
-
+            let data1 = req.body.value0;
+            const worldSetup = "Pretend you are someone helping me write a story and are coming up with one character suggestion."
+            const responseLimiter = "Do not include a name. Use only they pronouns and do not identify gender. Return results in point form. Create a total of 5 numerical points and limit each point to one sentence. Try to make the answers about various points in their lives. Do not include any text outside of the text in the numerical points."
             const chatCompletion = await openai.chat.completions.create({
                 messages: [
-                    {"role": "system", "content": responseLimiter},
                     {"role": "system", "content": worldSetup},
+                    {"role": "system", "content": responseLimiter},
                     {"role": "user", "content": data1},
                 ],
                 model: 'gpt-3.5-turbo',
@@ -61,11 +57,9 @@ async function main() {
 
             const output = JSON.stringify([chatCompletion.choices[0].message.content])
             const regex = /[\[\]"]/g;
-            const modifiedOutput = output.replace(regex, '');
+            let modifiedOutput = output.replace(regex, '');
             
             res.send({value: modifiedOutput});
-            console.log(modifiedOutput);
-            
         })
 
     }catch(error){
@@ -75,8 +69,6 @@ async function main() {
     }finally{
 
     }
-
-
 }
 
 main();

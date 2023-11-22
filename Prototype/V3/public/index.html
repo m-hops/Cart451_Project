@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Something; from somewhere</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id = "queryContainer">
+        <div class="query">
+          When people read my story, I want them to feel…<input type="text" id="field0">
+          The lesson/moral of my story is…<input type="text" id="field1">
+          The genre that would best describe my story is…<input type="text" id="field2">
+          One important detail of my story is…<input type="text" id="field3">
+          The place my story physically takes place is...<input type="text" id="field4">
+          The time my story takes place in is…<input type="text" id="field5"></br></br>
+
+          <input type="button" id="submitQuery" onClick="processQuery()" value="Run simulation">
+        </div>
+    </div>
+  </body>
+
+  <div id="popup" class="popup">
+    <div id="imageHolder"></div>
+    <div id="returnedResults"></div></br></br>
+    <input type="button" id="closeOverlayBTN" onClick="closePopup()" value="Close Window">
+  </div>
+
+  <div id="overlay" class="overlay">
+  </div>
+
+</html>
+
+<script src="js/processQuery.js"></script>
+
+
