@@ -55,25 +55,27 @@ async function main() {
                 {$project:  {_id: 0, card: "$cards.name"}},
                 {$unwind:   "$card"},
                 {$sample:    {size: 3}},
-                
             ]).toArray();
 
-            let stringMongoOutput = JSON.stringify(dbQuery);
-            let regexMonogo = stringMongoOutput.replace(/[\[\]{}":]|card/g, '');
+            const pastCard = dbQuery[0].card;
+            const presentCard = dbQuery[1].card;
+            const futureCard = dbQuery[2].card;
 
-            console.log(regexMonogo);
+            const worldSetup = "You are someone helping me write a story. I will give you some information, you will create a new character who exists in this world, and then you will give me 5 random facts about this person."
+            
+            const tarotPast = `For the characters past, take inspiration from the tarot card ${pastCard}.`
+            const tarotPresent = `For the characters present state, take inspiration fromtarot card ${presentCard}.`
+            const tarotFuture = `For the characters future, take inspiration fromthe tarot card ${futureCard}.`
+            const tarotPrompt = `Take inspiration from (but do not directly reference) the results of a tarot card read when constructing the character. ${tarotPast} ${tarotPresent} ${tarotFuture}`
 
-            const worldSetup = "Pretend you are someone helping me write a story. I will give you some information, you will imagine a character who exists in this world, and then you will give me random facts about this person."
-            const responseLimiter = "Do not include a name. The character uses they pronouns. Return results in point form, create a total of 5 points in numerical form, and limit each point to one sentence."
-            const tarotRadomizer = `Take inspiration from, but do not directly reference, the meaning of the tarot card ${regexMonogo}.`
+            const responseLimiter = "In the final output, do not include any names and remove any direct references to tarot cards. Refer to the character using only they pronouns. Return results in point form, create a total of 5 points in numerical form, and limit each point to one sentence."
+
             let data1 = req.body.value;
-
-            //console.log(data1);
 
             const chatCompletion = await openai.chat.completions.create({
                 messages: [
                     {"role": "system", "content": worldSetup},
-                    {"role": "system", "content": tarotRadomizer},
+                    {"role": "system", "content": tarotPrompt},
                     {"role": "system", "content": responseLimiter},
                     {"role": "user", "content": data1},
                 ],
@@ -83,11 +85,15 @@ async function main() {
             });
 
             const output = JSON.stringify([chatCompletion.choices[0].message.content])
-            const regex = /[\[\]"]/g;
-            const modifiedOutput = output.replace(regex, '');
+            const regex0 = /[\[\]"]|.*?1/g;
+            const formattedOutput = output.replace(regex0, '');
+            const regex1 = /.*?(1)/g;
+            const preTextRemovalOutput = formattedOutput.replace(regex1, '1');
+            const regex2 = /^(.*?\d.*?\.){5}/g;
+            const postTextRemovalOutput = preTextRemovalOutput.replace(regex2, '1');
 
             
-            res.send({value: modifiedOutput});
+            res.send({value: postTextRemovalOutput});
             //console.log(modifiedOutput);
             
         })

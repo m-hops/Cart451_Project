@@ -47,7 +47,7 @@ async function openPopup(text) {
   document.getElementById("popup").style.display = "block";
   document.getElementById("overlay").style.display = "block";
   document.getElementById("imageHolder").innerHTML = '<img src=' + newImageLink + ' id="returnedImage">';
-  document.getElementById("returnedResults").innerHTML = '<br>' + parsedOutput;
+  document.getElementById("returnedResults").innerHTML = '<br>1' + parsedOutput;
   document.getElementById("closeOverlayBTN").style.display = "block";
 }
 
