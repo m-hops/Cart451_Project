@@ -23,7 +23,6 @@ body{
     padding:20px;
     height:90vh;
     border-radius: 25px;
-    overflow: hidden;
 }
         
 .query{
@@ -74,7 +73,7 @@ input[type='button']{
     margin-bottom: 5%;
     padding-top: 5%;
     padding-bottom: 5%;
-    width:25%;
+    width:30%;
     background-color: black;
     opacity: 0.4;
     color: antiquewhite;
@@ -85,6 +84,12 @@ input[type='button']{
 input[type='button']:hover{
 
     opacity:0.9;
+}
+
+#title_area {
+    padding-top:25%;
+    padding-bottom:20%;
+    font-size: 2em;
 }
 
 .popup {
@@ -106,7 +111,7 @@ input[type='button']:hover{
     padding: 20px;
     text-align: center;
     justify-content: center;
-    overflow:hide;
+    overflow:scroll;
 }
 
 .overlay {
@@ -126,6 +131,8 @@ input[type='button']:hover{
     height: 250px;
     margin-left: auto;
     margin-right: auto;
+    border: 5px solid #555;
+    border-radius: 3.5px;
 }
 
 #returnedResults {
@@ -152,10 +159,9 @@ input[type='button']:hover{
     width:300px;
     height:300px;
     border-radius: 50%;
-    background:rgb(49, 49, 49);
+    background-color: rgb(49, 49, 49);
     transform: translate(-50% , 100%)  scale(0);
     animation: push 2s infinite ease;
-    opacity: 0.8;
 }
 
 #loader:after {
@@ -182,9 +188,11 @@ input[type='button']:hover{
     }
     50% , 75% {
     transform: translate(-50%, -30%) scale(0.5);
+    opacity: 0.8;
     }
     80%,  100% {
     transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
     }
 }
 

@@ -10,8 +10,8 @@ async function processQuery() {
     let field5 = document.getElementById('field5').value.toLowerCase();
     let field6 = document.getElementById('field6').value.toLowerCase();
 
-    let sent0 = `The mood of the story is... ${field0}.`;
-    let sent1 = `An important value I would like refelected in the world is ${field1}.`;
+    let sent0 = `The mood or tone of the story is ${field0}.`;
+    let sent1 = `The economic system that exists in the world of the story is ${field1}.`;
     let sent2 = `The genre(s) that would best describe this story is ${field2}.`;
     let sent3 = `One important detail of the story is ${field3}.`;
     let sent4 = `The location where of my story takes place in is ${field4}.`;
