@@ -1,0 +1,23 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "description": "First build of final for CART 451",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Madeline Zaytsoff",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.1.0",
+    "node-fetch": "^3.3.2",
+    "node-static": "^0.7.11",
+    "openai": "^4.15.0",
+    "openai-api": "^1.3.1"
+  }
+}
