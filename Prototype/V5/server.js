@@ -57,6 +57,10 @@ async function main() {
                 {$sample:    {size: 3}},
             ]).toArray();
 
+            console.log(dbQuery[0].card);
+            console.log(dbQuery[1].card);
+            console.log(dbQuery[2].card);
+
             const pastCard = dbQuery[0].card;
             const presentCard = dbQuery[1].card;
             const futureCard = dbQuery[2].card;
