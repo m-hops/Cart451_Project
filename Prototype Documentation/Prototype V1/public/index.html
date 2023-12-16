@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Someone; from somewhere</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+
+  <body>
+    <div id = "queryContainer">
+        <div class="query">
+            <input type="text" id="query1" placeholder="Genre">
+            <input type="text" id="query2" placeholder="When does it take place?">
+            <input type="button" id="submitQuery" onClick="processQuery()" value="Run simulation">
+        </div>
+    </div>
+  </body>
+
+  <div id="popup" class="popup">
+    <div id="imageHolder"></div>
+    <div id="returnedResults"></div>
+  </div>
+
+  <div id="overlay" class="overlay" onClick="closePopup()"></div>
+
+</html>
+
+<script src="js/processQuery.js"></script>
+
+
